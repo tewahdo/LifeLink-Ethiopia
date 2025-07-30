@@ -123,15 +123,15 @@ NEXT_PUBLIC_USERINFO_ENDPOINT=https://esignet.ida.fayda.et/v1/esignet/oidc/useri
 EXPIRATION_TIME=15
 ALGORITHM=RS256
 CLIENT_ASSERTION_TYPE=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
-
 PRIVATE_KEY="your_private_key_here"
 
    
 
 5. Prisma Migrations
 
-      npx prisma migrate dev --name init
-   npx prisma generate
+ npx prisma migrate dev --name init
+
+npx prisma generate
 
 
 5. Tailwind CSS Setup 
