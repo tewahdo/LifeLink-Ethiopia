@@ -1,4 +1,114 @@
-5. Tailwind CSS Setup (if using Tailwind)
+# LifeLink Ethiopia 🌍
+
+LifeLink Ethiopia is a full-stack national dashboard platform designed to unify Ethiopia's essential services through Fayda ID, the country's official digital identity system. This project connects healthcare, banking, telecom, immigration, and public safety—empowering citizens to manage their life journey through one secure digital profile, while institutions streamline service delivery using verified, role-based dashboards.
+
+---
+
+## 🧑‍💻 Contributors
+
+* Ebisse Fantahun
+* Meskerem Tolossa
+* Samuel Wondimu
+
+---
+
+## 📜 Project Synopsis
+
+### 🔍 Problem Statement
+
+Ethiopian citizens interact with a wide range of public and private services—healthcare, banking, telecom, immigration, and public safety. These services operate in isolation, creating inefficiencies, lost records, long wait times, and limited access to real-time data. There is no single digital platform for citizens to manage their life journey or for institutions to coordinate services effectively.
+
+### 💡 Planned Solution
+
+LifeLink Ethiopia is a full-stack national dashboard ecosystem that unifies Ethiopia’s core services through Fayda ID, the country’s digital identity system. With LifeLink:
+
+* Citizens access all services using a secure digital profile
+* Institutions streamline service delivery through modular, role-based dashboards
+* Admins gain national insights for smarter policymaking
+
+Modules built and in progress:
+
+* Authentication & Navbar: NextAuth.js integration with Fayda OIDC, custom login page, and responsive Navbar with Home, User, Health, Banking, Telecom, Immigration, and Police links.
+* User Profile Dashboard: Goals, routines, and personal preferences management.
+* Healthcare Dashboard: CRUD on patient records, analytics, and secure access.
+* Banking Dashboard: Linked accounts overview, balance display, recent transactions.
+* Telecom Dashboard: SIM management, call records, usage statistics.
+* Immigration Dashboard: Travel documents, status tracking.
+* Police & Safety Dashboard: Incident reporting, officer tracking, crime analytics, seeded sample data.
+
+### 🎯 Expected Outcome
+
+A secure, user-centered MVP demonstrating how Fayda ID can:
+
+* Empower individuals to manage their life digitally
+* Enable interoperability across sectors
+* Strengthen national service delivery and citizen trust
+
+LifeLink envisions a future where one verified identity = full national access.
+
+---
+
+## 🧰 Tech Stack
+
+| Layer             | Tools & Technologies                            |
+| ----------------- | ----------------------------------------------- |
+| Frontend      | Next.js (App Router), React, TypeScript         |
+| Styling       | Tailwind CSS / Inline CSS / CSS Modules         |
+| Backend       | Node.js, Next.js API Routes                     |
+| Database      | PostgreSQL via Prisma ORM                       |
+| Auth          | NextAuth.js + Fayda OIDC (eSignet)              |
+| Visualization | Chart.js (health usage trends)                  |
+| Deployment    | Vercel                                          |
+| Testing       | Postman                                         |
+| Security      | Role-based access, 2FA, JWTs, client\_assertion |
+
+---
+
+## 🚀 Installation & Setup
+
+1. Clone the repository
+
+      git clone https://github.com/tewahdo/lifelink-ethiopia.git
+   cd lifelink-ethiopia
+   
+
+2. Install dependencies
+
+      npm install
+   
+
+3. Configure environment
+   Create a .env with
+   DATABASE_URL=postgresql://neondb_owner:npg_f1D7JcpyWTjk@ep-quiet-tooth-adgubbbl-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+NEXTAUTH_SECRET=b435804a0674c1432a6188483f03af93fe8e60d34483e2562564bb117d0047a5
+NEXTAUTH_URL=http://localhost:3000
+   
+
+   Create a .env.local file in the project root with:   
+NEXT_PUBLIC_CLIENT_ID=crXYIYg2cJiNTaw5t-peoPzCRo-3JATNfBd5A86U8t0
+NEXT_PUBLIC_REDIRECT_URI=http://localhost:3000/callback
+NEXT_PUBLIC_AUTHORIZATION_ENDPOINT=https://esignet.ida.fayda.et/authorize
+NEXT_PUBLIC_TOKEN_ENDPOINT=https://esignet.ida.fayda.et/v1/esignet/oauth/v2/token
+NEXT_PUBLIC_USERINFO_ENDPOINT=https://esignet.ida.fayda.et/v1/esignet/oidc/userinfo
+EXPIRATION_TIME=15
+ALGORITHM=RS256
+CLIENT_ASSERTION_TYPE=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDA7A9e42Qp3qfG\n+T2HgMrEBM6WffEYm8SgAk7qBWcZHYFzxN0kVG+y6J4RifvxPjJZRzx3A0TTCkax\n4OJep7XtFlOb6iQifXzzSLs+EwRc3pPvGx+8I68y8EoZ5Syv7WtO3P4oM+GZ4e2A\nx5Snc3k8bmUw6d/bZaqk2UxkkKvTHKeZr1m7rhtWqW5q+5EO9g68xqgLBMZqQkId\nx71ra+a24MIBl2EzoVKH+9tpi0guDAXeayP3Q9z27zgjv/F3LqFwHdOSZZDBM55f\nY8lhxHkqWBl0u9/Q6roH4D3hxzHRz/7L6mrO8cA5uQ9x3J6u/DW+9UIkyqz6N4Re\nAgMBAAECggEAQnoSi+SR8GFa8r2KUfJsZxEGDNPb7I91jY9DQrfq6xnTjhwln6Xt\n7IpRQk1n7szjN1XZ9Dr7HqOiDmw3deD8Yk+nT4LZkc4I5M0KhYYr9Io4/jBg5jy7\nKCd/ZnNbyEG3bK8m3yIqcy6Zs9O0uV3D7EmFf51Ee9pp33qv0+S4lLRQkUIA4Fp7\npziEvY7Qp7Pc3vpoL7d+oK6mP/N9C7pj6nA1+uqMgOGtE2p0Y+Nf+SCMlSPTWm5j\nsyfN/PHq0NoEdqpzUuzcgMG5DdYVb6jTOmtH4+tqlDl6hP+tK+P6SvUKOY/ljw8+\nUwKBgQDxS39/5GkMd7BkPcaxgrU65xuF9F4jOpCZ8m6V/CWJ7xhvv9KMmMnwfhIA\n1YwFG0LCKEjHCp0o7T2H2joUkRPKMCOprZcYqkUapAzYFSZRjTWp7m1t9wER0IxX\nOwFkU7e+2Mwv1c4HlF2uQzU3bdHIVu9+w8tZd0MsUolQAAQKBgQDRztw7Mb2CKrf\n5zpoAGD+0LhsdnjIc9oRV9qP0j9f4kko7ByTwP8T7hF8K6lWlszCUIOeR6JS72SI\nvIu9e+XDDHOBTXsZtQChGxzXNK1wYvZ5Hz7nFy5NY2gFbZgxOh13Eo9RucQuzYc+\n+PwKBgQDjtdjapA1tpb8a4Vv6YDjSCQwwHqZjogILJUHPGCRw8E+r9+p4smHkY1F\n8pRT3KlErlB4rSjoT5hE0L5HbnLMuR/CtOvv2/Z2jJp36u0CsOhnx/y6nJoZaSov\nrO6LEuUnm8Uw8jRbmksPZTQvQEgF86KlNfbkz4rI5Y2knJAf9QKBgEAD/wEfXHjL\nvBj3XN2/T7Ck3+JJuc7b6lDUqZRt8/cPQG4czxdCt1dr7EB60vTsftZ3KcB7PqvH\n78SnkJAOG3k/V0a/6hBvj9tyV0FEoL9i6HpjCqgS2GV84VqUkRpoGwY7hP3mr7Ax\n+ShxvA8Nj4XHcHIlAoGBAL5woP5JhKW8Y2WqdzQZBX10QIVP8QqRJtDjqkMqXGkm\nULVkMLNNEt8F8Rd0En53W6H2s9x9vMLh8qnvPSbRtpJf66jXrGexDEWcswO4TXs1\nN8TSGuEYVqVwAoH6q9avzXbG0wF2gK3Cxr9mNKLTku3X+aRHzRfvA6Mdpo7lKUx9\n-----END PRIVATE KEY-----"
+
+
+5. Prisma Migrations
+
+      npx prisma migrate dev --name init
+   npx prisma generate
+
+
+
+
+
+
+
+
+   5. Tailwind CSS Setup (if using Tailwind)
 
       npm install -D tailwindcss postcss autoprefixer
    npx tailwindcss init -p
@@ -63,6 +173,3 @@ Open [http://localhost:3000](http://localhost:3000) to view in browser.
 
 ---
 
-## 📄 License
-
-MIT
