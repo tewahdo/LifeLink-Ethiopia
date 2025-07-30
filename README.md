@@ -86,7 +86,7 @@ docker-compose up
 ```
 
 Your app will run on [http://localhost:3000](http://localhost:3000)
-BENEZ, [7/30/2025 2:11 PM]
+
 
 ---
 
@@ -127,7 +127,7 @@ PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwgg
       npx prisma migrate dev --name init
    npx prisma generate
 
-BENEZ, [7/30/2025 2:11 PM]
+
 5. Tailwind CSS Setup 
 
       npm install -D tailwindcss postcss autoprefixer
