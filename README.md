@@ -105,9 +105,9 @@ Your app will run on [http://localhost:3000](http://localhost:3000)
 
 3. Configure environment
    Create a .env with
-  # Database
+   #Database 
 DATABASE_URL=postgresql://your_db_user:your_db_password@your-db-host/dbname?sslmode=require
-# Auth
+#Auth
 NEXTAUTH_SECRET=your_nextauth_secret
 NEXTAUTH_URL=http://localhost:3000
 
