@@ -110,9 +110,8 @@ PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwgg
 
    5. Tailwind CSS Setup (if using Tailwind)
 
-      npm install -D tailwindcss postcss autoprefixer
+   npm install -D tailwindcss postcss autoprefixer
    npx tailwindcss init -p
-   
 
    Ensure your tailwind.config.js has:
 
