@@ -86,3 +86,169 @@ docker-compose up
 ```
 
 Your app will run on [http://localhost:3000](http://localhost:3000)
+BENEZ, [7/30/2025 2:11 PM]
+# LifeLink Ethiopia 🌍
+
+LifeLink Ethiopia is a full-stack national dashboard platform designed to unify Ethiopia's essential services through Fayda ID, the country's official digital identity system. This project connects healthcare, banking, telecom, immigration, and public safety—empowering citizens to manage their life journey through one secure digital profile, while institutions streamline service delivery using verified, role-based dashboards.
+
+---
+
+## 🧑‍💻 Contributors
+
+* Ebisse Fantahun
+* Meskerem Tolossa
+* Samuel Wondimu
+
+---
+
+## 📜 Project Synopsis
+
+### 🔍 Problem Statement
+
+Ethiopian citizens interact with a wide range of public and private services—healthcare, banking, telecom, immigration, and public safety. These services operate in isolation, creating inefficiencies, lost records, long wait times, and limited access to real-time data. There is no single digital platform for citizens to manage their life journey or for institutions to coordinate services effectively.
+
+### 💡 Planned Solution
+
+LifeLink Ethiopia is a full-stack national dashboard ecosystem that unifies Ethiopia’s core services through Fayda ID, the country’s digital identity system. With LifeLink:
+
+* Citizens access all services using a secure digital profile
+* Institutions streamline service delivery through modular, role-based dashboards
+* Admins gain national insights for smarter policymaking
+
+Modules built and in progress:
+
+* Authentication & Navbar: NextAuth.js integration with Fayda OIDC, custom login page, and responsive Navbar with Home, User, Health, Banking, Telecom, Immigration, and Police links.
+* User Profile Dashboard: Goals, routines, and personal preferences management.
+* Healthcare Dashboard: CRUD on patient records, analytics, and secure access.
+* Banking Dashboard: Linked accounts overview, balance display, recent transactions.
+* Telecom Dashboard: SIM management, call records, usage statistics.
+* Immigration Dashboard: Travel documents, status tracking.
+* Police & Safety Dashboard: Incident reporting, officer tracking, crime analytics, seeded sample data.
+
+### 🎯 Expected Outcome
+
+A secure, user-centered MVP demonstrating how Fayda ID can:
+
+* Empower individuals to manage their life digitally
+* Enable interoperability across sectors
+* Strengthen national service delivery and citizen trust
+
+LifeLink envisions a future where one verified identity = full national access.
+
+---
+
+## 🧰 Tech Stack
+
+| Layer             | Tools & Technologies                            |
+| ----------------- | ----------------------------------------------- |
+| Frontend      | Next.js (App Router), React, TypeScript         |
+| Styling       | Tailwind CSS / Inline CSS / CSS Modules         |
+| Backend       | Node.js, Next.js API Routes                     |
+| Database      | PostgreSQL via Prisma ORM                       |
+| Auth          | NextAuth.js + Fayda OIDC (eSignet)              |
+| Visualization | Chart.js (health usage trends)                  |
+| Deployment    | Vercel                                          |
+| Testing       | Postman                                         |
+| Security      | Role-based access, 2FA, JWTs, client\_assertion |
+
+---
+
+## 🚀 Installation & Setup
+
+1. Clone the repository
+
+      git clone https://github.com/tewahdo/lifelink-ethiopia.git
+   cd lifelink-ethiopia
+   
+
+2. Install dependencies
+
+      npm install
+   
+
+3. Configure environment
+
+   Create a .env.local file in the project root with:
+
+      DATABASE_URL=postgresql://user:pass@localhost:5432/lifelink
+   NEXTAUTH_SECRET=your_nextauth_secret
+   NEXT_PUBLIC_CLIENT_ID=your_fayda_client_id
+   NEXT_PUBLIC_REDIRECT_URI=http://localhost:3000/callback
+   NEXT_PUBLIC_AUTHORIZATION_ENDPOINT=https://esignet.ida.fayda.et/authorize
+   NEXT_PUBLIC_TOKEN_ENDPOINT=https://esignet.ida.fayda.et/v1/esignet/oauth/v2/token
+   PRIVATE_KEY=<base64-encoded-JWK-private-key>
+   CLIENT_ASSERTION_TYPE=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+   
+
+4. Prisma Migrations
+
+      npx prisma migrate dev --name init
+   npx prisma generate
+
+BENEZ, [7/30/2025 2:11 PM]
+5. Tailwind CSS Setup 
+
+      npm install -D tailwindcss postcss autoprefixer
+   npx tailwindcss init -p
+   
+
+   Ensure your tailwind.config.js has:
+
+      module.exports = {
+     content: ['./src/app/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
+     theme: { extend: {} },
+     plugins: [],
+   }
+   
+
+   And src/app/globals.css contains:
+
+      @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   
+
+6. Run the development server
+
+      npm run dev
+   
+
+Open [http://localhost:3000](http://localhost:3000) to view in browser.
+
+---
+
+## 🔧 Usage
+
+* Login: Navigate to /login, select OTP or Biometrics, enter your FAN, then you'll be redirected back to the dashboard.
+* Navigate: Use the Navbar to switch between Home, User, Health, Banking, Telecom, Immigration, and Police dashboards.
+
+---
+
+## 🌐 API Routes
+
+* GET /api/healthcare/[userId]
+* GET /api/banking/accounts/[userId]
+* GET /api/telecom/accounts/[userId]
+* GET /api/police/incidents
+* GET /api/police/officers
+
+---
+
+## 🛡 Security & Authentication
+
+* Fayda OIDC: eSignet integration with Authorization Code Flow and client\_assertion JWT
+* NextAuth.js: wraps custom provider for Fayda
+* Role-based access: middleware protects /dashboard/* routes
+
+---
+
+## 📈 Future Enhancements
+
+* Add Chart.js visualizations for crime stats, financial trends
+* Implement data creation/edit forms for incidents, transactions
+* Mobile-responsive Navbar with hamburger menu
+* Deeper integration with additional services (education, legal)
+
+---
+
+
