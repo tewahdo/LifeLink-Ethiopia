@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_CLIENT_ID=${NEXT_PUBLIC_CLIENT_ID}
+      - NEXT_PUBLIC_REDIRECT_URI=${NEXT_PUBLIC_REDIRECT_URI}
+      - NEXT_PUBLIC_AUTHORIZATION_ENDPOINT=${NEXT_PUBLIC_AUTHORIZATION_ENDPOINT}
+      - NEXT_PUBLIC_TOKEN_ENDPOINT=${NEXT_PUBLIC_TOKEN_ENDPOINT}
+      - NEXT_PUBLIC_USERINFO_ENDPOINT=${NEXT_PUBLIC_USERINFO_ENDPOINT}
+      - EXPIRATION_TIME=${EXPIRATION_TIME}
+      - ALGORITHM=${ALGORITHM}
+      - CLIENT_ASSERTION_TYPE=${CLIENT_ASSERTION_TYPE}
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: lifelinkdb
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
